@@ -43,7 +43,6 @@ for image_batch, label_batch in dataloader_test:
     break
 
 model = models.MyModel()
-
 acc_test = models.test_accuracy(model, dataloader_test)
 print(f'test_accuracy: {acc_test*100:.3f}%')
 
