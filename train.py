@@ -7,12 +7,10 @@ from torchvision import datasets
 import torchvision.transforms.v2 as transforms
 
 import models
-
 ds_transform = transforms.Compose([
     transforms.ToImage(),
     transforms.ToDtype(torch.float32, scale=True)
 ])
-
 ds_train = datasets.FashionMNIST(
     root='data',
     train=True,
