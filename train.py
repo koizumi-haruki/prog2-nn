@@ -65,21 +65,34 @@ acc_test_history = []
 for k in range(n_epochs):
     print(f'epoch {k+1}/{n_epochs}', end=': ', flush=True)
 
+    time_start = time.time()
     loss_train = models.train(model, dataloader_train, loss_fn, optimizer)
-    loss_train_history.append(loss_train)
     print(f'train loss: {loss_train:.3f}', end=', ')
+    loss_train_history.append(loss_train)
+    time_end = time.time()
+    print(f'実行時間: {time_end-time_start:.2f}秒', end=', ', flush=True)
 
+    time_start = time.time()
     loss_test = models.test(model, dataloader_test, loss_fn)
-    loss_test_history.append(loss_test)
     print(f'test loss: {loss_test:.3f}', end=', ')
-
+    loss_test_history.append(loss_test)
+    time_end = time.time()
+    print(f'実行時間: {time_end-time_start:.2f}秒', end=', ', flush=True)
+    
+    time_start = time.time()
     acc_train = models.test_accuracy(model, dataloader_train)
-    acc_train_history.append(acc_train)
     print(f'train accuracy: {acc_train*100:.3f}%', end=', ')
+    acc_train_history.append(acc_train)
+    time_end = time.time()
+    print(f'実行時間: {time_end-time_start:.2f}秒', end=', ', flush=True)
 
+    time_start = time.time()
     acc_test = models.test_accuracy(model, dataloader_test)
+    print(f'test_accuracy: {acc_test*100:.3f}%', end=', ', flush=True)
     acc_test_history.append(acc_test)
-    print(f'test_accuracy: {acc_test*100:.3f}%')
+    time_end = time.time()
+    print(f'実行時間: {time_end-time_start:.2f}秒')
+
 
 
 plt.plot(acc_train_history, label='train')
